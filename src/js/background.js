@@ -6,8 +6,6 @@
  *
  * Note that not all extensions need of a background.js file, but extensions that need to persist data after a popup has closed may need of it.
  */
-
-// A sample object that will be exposed further down and used on popup.js
 const sampleBackgroundGlobal = {
     message: 'This object comes from background.js'
 };
