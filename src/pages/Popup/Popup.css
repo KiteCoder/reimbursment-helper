@@ -7,7 +7,7 @@
   text-align: center;
   height: 100%;
   padding: 10px;
-  background-color: #282c34;
+  background-color: #D9D7D9;
 }
 
 .App-logo {
@@ -28,11 +28,11 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #7A98BF;
 }
 
 .App-link {
-  color: #61dafb;
+  color:#7A98BF;
 }
 
 @keyframes App-logo-spin {
