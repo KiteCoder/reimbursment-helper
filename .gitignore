@@ -1,34 +1,20 @@
-## IDEs ###
-*.sublime-workspace
-.tag*
-.tern-project
+# See https://help.github.com/ignore-files/ for more about ignoring files.
 
-### OSX ###
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# production
+/dist
+
+# misc
 .DS_Store
-.AppleDouble
-.LSOverride
-Icon
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Thumbnails
-._*
-
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
-
-### Windows ###
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
-
-# Folder config file
-Desktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-dist/
-node_modules/
-.tmp
-GumGumScreenshots_*.crx
-updates.xml
+# secrets
+secrets.*.js
