@@ -35,7 +35,7 @@ var server = new WebpackDevServer(compiler, {
   injectClient: false,
   writeToDisk: true,
   port: env.PORT,
-  contentBase: path.join(__dirname, '../build'),
+  contentBase: path.join(__dirname, '../dist'),
   publicPath: `http://localhost:${env.PORT}`,
   headers: {
     'Access-Control-Allow-Origin': '*',

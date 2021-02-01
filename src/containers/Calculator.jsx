@@ -1,28 +1,65 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
+import { Form, Button, Col, InputGroup, FormControl } from 'react-bootstrap';
 
 export const Calculator = () => {
-  
-  const [text, setText] = useState('');
-  const [amount, setAmount] = useState(0);
+
+  const [subtotalAmounts, setSubtotalAmounts] = useState({ 0: null });
+  const [taxAmounts, setTaxAmounts] = useState([]);
+
+  const addSubtotalAmount = (subTotalAmount) => {
+
+    subtotalAmounts.push(subTotalAmount)
+    setSubtotalAmounts(subtotalAmounts);
+  };
+
+
 
   return (<>
     <h2>
-      Expense Tracker
+      Expense Helper
     </h2>
-    <form>
-      <div className="form-control">
-        <label htmlFor="text">Text</label>
-        <input type="text" value={text} onChange={(e) => setText(e.target.value)} placeholder="Enter text..." />
-      </div>
-      <div className="form-control">
-        <label htmlFor="amount"
-        >Amount <br />
-              (negative - expense, positive - income)</label
-        >
-        <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Enter amount..." />
-      </div>
-      <button className="btn">Add transaction</button>
-    </form>
+    <Form>
+      <Form.Row className="align-items-center">
+        <Col sm={4} className="my-1">
+          <Form.Label htmlFor="inlineFormInputName" srOnly>
+            Subtotal
+      </Form.Label>
+          <Form.Control id="inlineFormInputName" placeholder="Subtotal" />
+        </Col>
+        <Col xs="auto" className="my-1">
+          <Button type="submit">+</Button>
+        </Col>
+        <Col sm={4} className="my-1">
+          <Form.Label htmlFor="inlineFormInputName" srOnly>
+            Tax
+      </Form.Label>
+          <Form.Control id="inlineFormInputName" placeholder="Tax" />
+        </Col>
+        <Col xs="auto" className="my-1">
+          <Button type="submit">+</Button>
+        </Col>
+      </Form.Row>
+      <Form.Row className="align-items-center">
+        <Col sm={4} className="my-1">
+          <Form.Label htmlFor="inlineFormInputName" srOnly>
+            Subtotal
+      </Form.Label>
+          <Form.Control id="inlineFormInputName" placeholder="Subtotal" />
+        </Col>
+        <Col xs="auto" className="my-1">
+          <Button type="submit">-</Button>
+        </Col>
+        <Col sm={4} className="my-1">
+          <Form.Label htmlFor="inlineFormInputName" srOnly>
+            Tax
+      </Form.Label>
+          <Form.Control id="inlineFormInputName" placeholder="Tax" />
+        </Col>
+        <Col xs="auto" className="my-1">
+          <Button type="submit">-</Button>
+        </Col>
+      </Form.Row>
+    </Form>
   </>
   )
 }
