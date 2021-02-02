@@ -3,16 +3,23 @@ import { Form, Button, Col, InputGroup, FormControl } from 'react-bootstrap';
 
 export const Calculator = () => {
 
-  const [subtotalAmounts, setSubtotalAmounts] = useState({ 0: null });
+  const [subtotal, setSubtotal] = useState(null);
+  const [tax, setTax] = useState(null);
+
+  const [subtotalAmounts, setSubtotalAmounts] = useState([]);
   const [taxAmounts, setTaxAmounts] = useState([]);
 
-  const addSubtotalAmount = (subTotalAmount) => {
-
-    subtotalAmounts.push(subTotalAmount)
+  const addSubTotal = () => {
+    subtotalAmounts.push(subtotal);
     setSubtotalAmounts(subtotalAmounts);
+    setSubtotal(null);
   };
 
-
+  const addTax = () => {
+    taxAmounts.push(tax);
+    setTaxAmounts(taxAmounts);
+    setTax(null);
+  };
 
   return (<>
     <h2>
@@ -21,42 +28,32 @@ export const Calculator = () => {
     <Form>
       <Form.Row className="align-items-center">
         <Col sm={4} className="my-1">
-          <Form.Label htmlFor="inlineFormInputName" srOnly>
-            Subtotal
-      </Form.Label>
-          <Form.Control id="inlineFormInputName" placeholder="Subtotal" />
+          <Form.Control type="number" placeholder="Subtotal" value={subtotal || ''} onChange={e => setSubtotal(e.target.value)} />
         </Col>
         <Col xs="auto" className="my-1">
-          <Button type="submit">+</Button>
+          <Button variant="outline-primary" onClick={() => addSubTotal()}>+</Button>
         </Col>
         <Col sm={4} className="my-1">
-          <Form.Label htmlFor="inlineFormInputName" srOnly>
-            Tax
-      </Form.Label>
-          <Form.Control id="inlineFormInputName" placeholder="Tax" />
+          <Form.Control type="number" placeholder="Tax" value={tax || ''} onChange={e => setTax(e.target.value)} />
         </Col>
         <Col xs="auto" className="my-1">
-          <Button type="submit">+</Button>
+          <Button variant="outline-primary" onClick={() => addTax()}>+</Button>
         </Col>
       </Form.Row>
       <Form.Row className="align-items-center">
         <Col sm={4} className="my-1">
-          <Form.Label htmlFor="inlineFormInputName" srOnly>
-            Subtotal
-      </Form.Label>
-          <Form.Control id="inlineFormInputName" placeholder="Subtotal" />
+          {subtotalAmounts.map((amount) => {
+            return <div key={amount}>{amount}</div>;
+          })}
         </Col>
-        <Col xs="auto" className="my-1">
-          <Button type="submit">-</Button>
-        </Col>
+
         <Col sm={4} className="my-1">
-          <Form.Label htmlFor="inlineFormInputName" srOnly>
-            Tax
-      </Form.Label>
-          <Form.Control id="inlineFormInputName" placeholder="Tax" />
+          {taxAmounts.map((amount) => {
+            return <div key={amount}>{amount}</div>;
+          })}
         </Col>
         <Col xs="auto" className="my-1">
-          <Button type="submit">-</Button>
+          <Button variant="outline-danger">-</Button>
         </Col>
       </Form.Row>
     </Form>
