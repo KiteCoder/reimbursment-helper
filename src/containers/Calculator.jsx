@@ -66,7 +66,7 @@ export const Calculator = () => {
     </h2>
     <Row className="align-items-center">
 
-      <Col sm={6} className="my-1">
+      <Col xs={6} className="my-1">
         <Form onSubmit={(e) => addSubTotal(e)}>
           <Form.Row>
             <Col xs={9} className="my-1">
@@ -79,7 +79,7 @@ export const Calculator = () => {
         </Form>
       </Col>
 
-      <Col sm={6} className="my-1">
+      <Col xs={6} className="my-1">
         <Form onSubmit={(e) => addTax(e)}>
           <Form.Row>
             <Col xs={9} className="my-1">
@@ -94,7 +94,7 @@ export const Calculator = () => {
 
     </Row>
     <Row className="align-items-center">
-      <Col sm={6} className="my-1">
+      <Col xs={6} className="my-1">
         {subtotalAmounts.map((amount, index) => {
           return <div key={index}>
 
@@ -103,7 +103,7 @@ export const Calculator = () => {
         })}
       </Col>
 
-      <Col sm={6} className="my-1">
+      <Col xs={6} className="my-1">
         {taxAmounts.map((amount, index) => {
           return <div key={index}>{amount}
             <Button variant="outline-danger" onClick={(e) => removeTaxItem(e)}>-</Button></div>;
@@ -113,7 +113,7 @@ export const Calculator = () => {
     </Row>
 
     <Row className="align-items-center">
-      <Col sm={6} className="my-1">
+      <Col xs={6} className="my-1">
 
         <p>Subtotal total: {subtotalAmounts.reduce((accumulator, currentValue) => accumulator + currentValue, 0)}</p>
         <Button variant="outline-success" onClick={() => copySubtotalTotal()}>copy</Button>
@@ -125,7 +125,7 @@ export const Calculator = () => {
         }
       </Col>
 
-      <Col sm={6} className="my-1">
+      <Col xs={6} className="my-1">
 
         <p>Tax total: {taxAmounts.reduce((accumulator, currentValue) => accumulator + currentValue, 0)}</p>
         <Button variant="outline-success" onClick={() => copyTaxTotal()}>copy</Button>
