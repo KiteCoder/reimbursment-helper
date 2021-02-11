@@ -9,6 +9,9 @@ export const Calculator = () => {
   const [subtotalAmounts, setSubtotalAmounts] = useState([]);
   const [taxAmounts, setTaxAmounts] = useState([]);
 
+  const [subtotalCopySuccess, setSubtotalCopySuccess] = useState(false);
+  const [taxCopySuccess, setTaxCopySuccess] = useState(false);
+
   const addSubTotal = (e) => {
     e.preventDefault();
     subtotalAmounts.push(Number(subtotal));
@@ -42,6 +45,18 @@ export const Calculator = () => {
   const clearForm = () => {
     setTaxAmounts([]);
     setSubtotalAmounts([]);
+    setSubtotalCopySuccess(false);
+    setTaxCopySuccess(false);
+  }
+
+  const copySubtotalTotal = () => {
+    navigator.clipboard.writeText(subtotalAmounts.reduce((accumulator, currentValue) => accumulator + currentValue, 0));
+    setSubtotalCopySuccess(true);
+  }
+
+  const copyTaxTotal = () => {
+    navigator.clipboard.writeText(taxAmounts.reduce((accumulator, currentValue) => accumulator + currentValue, 0));
+    setTaxCopySuccess(true);
   }
 
 
@@ -101,13 +116,25 @@ export const Calculator = () => {
       <Col sm={6} className="my-1">
 
         <p>Subtotal total: {subtotalAmounts.reduce((accumulator, currentValue) => accumulator + currentValue, 0)}</p>
-        <Button variant="outline-success">copy</Button>
+        <Button variant="outline-success" onClick={() => copySubtotalTotal()}>copy</Button>
+        {
+          subtotalCopySuccess ?
+            <div style={{ "color": "green" }}>
+              Success!
+            </div> : null
+        }
       </Col>
 
       <Col sm={6} className="my-1">
 
         <p>Tax total: {taxAmounts.reduce((accumulator, currentValue) => accumulator + currentValue, 0)}</p>
-        <Button variant="outline-success">copy</Button>
+        <Button variant="outline-success" onClick={() => copyTaxTotal()}>copy</Button>
+        {
+          taxCopySuccess ?
+            <div style={{ "color": "green" }}>
+              Success!
+            </div> : null
+        }
       </Col>
 
     </Row>
